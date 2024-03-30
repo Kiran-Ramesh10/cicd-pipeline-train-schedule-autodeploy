@@ -45,6 +45,10 @@ task npm_build(type: NpmTask) {
     ignoreExitValue = true
 }
 
+task clean(type: Delete) {
+    delete 'dist' // Specify the directory to be cleaned
+}
+
 // Declare task dependencies
 build.dependsOn zip
 zip.dependsOn npm_build
