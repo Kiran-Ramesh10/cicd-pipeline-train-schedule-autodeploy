@@ -8,6 +8,13 @@ pipeline {
     }
 
     stages {
+           stage('Package') {
+            steps {
+                echo 'Creating dist directory'
+                sh 'mkdir -p dist'
+                sh 'cp -r * dist/'
+            }
+        }
         stage('Build Docker Image') {
             steps {
                 script {
