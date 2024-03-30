@@ -10,6 +10,7 @@ node {
     download = true
 }
 
+// Ensure 'dist' directory is created before packaging
 task createDistDir(type: Copy) {
     from ''
     into 'dist'
@@ -17,6 +18,7 @@ task createDistDir(type: Copy) {
 
 // Declare a task to create a zip of the app
 task packageApp(type: Zip) {
+    dependsOn createDistDir
     from ('.') {
         include "*"
         include "bin/**"
