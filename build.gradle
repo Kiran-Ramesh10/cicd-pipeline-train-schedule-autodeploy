@@ -28,10 +28,6 @@ task zip(type: Zip) {
 }
 
 // Declare npm tasks
-task npmInstall(type: NpmTask) {
-    dependsOn "npmInstall"
-}
-
 task npm_test(type: NpmTask) {
     dependsOn npmInstall
 }
