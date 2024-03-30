@@ -39,4 +39,9 @@ task npmBuild(type: NpmTask) {
 // Declare task dependencies
 npmTest.dependsOn npmInstallCustom
 npmBuild.dependsOn npmTest
-build.dependsOn zip
+
+// Define the build task and its dependencies
+task build {
+    dependsOn zip
+    dependsOn npmBuild
+}
