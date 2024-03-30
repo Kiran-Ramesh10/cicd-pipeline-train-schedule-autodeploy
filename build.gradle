@@ -11,7 +11,7 @@ node {
 }
 
 // Declare a task to create a zip of the app
-task build
+task build(type: Task)
 
 // Declare task dependencies
 task packageApp(type: Zip) {
