@@ -13,7 +13,6 @@ node {
 
 // Declare a task to create a zip of the app
 task packageApp(type: Zip) {
-    dependsOn createDistDir
     from ('.') {
         include "*"
         include "bin/**"
