@@ -47,5 +47,4 @@ task clean(type: Delete) {
 }
 
 // Declare task dependencies
-build.dependsOn packageApp
 packageApp.dependsOn npm_build
