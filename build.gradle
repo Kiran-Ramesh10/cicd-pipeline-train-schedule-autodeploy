@@ -14,7 +14,7 @@ node {
 task build
 
 // Declare task dependencies
-task package(type: Zip) {
+task packageApp(type: Zip) {
     from ('.') {
         include "*"
         include "bin/**"
