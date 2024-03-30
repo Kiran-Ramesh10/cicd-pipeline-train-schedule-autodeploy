@@ -32,10 +32,14 @@ task zip(type: Zip) {
 task npm_test(type: NpmTask) {
     dependsOn npmInstall
     inputs.files fileTree('package.json')
+    // Specify the command to execute npm test
+    args = ['test']
 }
 
 task npm_build(type: NpmTask) {
     dependsOn npm_test
+    // Specify the command to execute npm build
+    args = ['run', 'build']
 }
 
 // Declare task dependencies
