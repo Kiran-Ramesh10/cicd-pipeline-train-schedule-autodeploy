@@ -10,11 +10,6 @@ node {
     download = true
 }
 
-// Ensure 'dist' directory is created before packaging
-task createDistDir(type: Copy) {
-    from ''
-    into '/dist'
-}
 
 // Declare a task to create a zip of the app
 task packageApp(type: Zip) {
