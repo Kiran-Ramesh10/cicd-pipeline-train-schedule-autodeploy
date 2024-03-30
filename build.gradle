@@ -1,9 +1,16 @@
-plugins {
-    // Use the Node.js plugin to execute Node.js and npm tasks
-    id 'com.github.node-gradle.node' version '4.1.0'
+// Specify the plugin repository explicitly
+pluginManagement {
+    repositories {
+        gradlePluginPortal()
+    }
 }
 
-// Specify Node.js and npm versions
+// Apply the Node.js plugin to execute Node.js and npm tasks
+plugins {
+    id 'com.github.node-gradle.node' version '3.0.1'
+}
+
+// Configure Node.js and npm versions
 node {
     version = '9.11.1'
     npmVersion = '5.8.0'
