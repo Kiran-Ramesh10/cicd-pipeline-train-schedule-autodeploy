@@ -27,7 +27,7 @@ task packageApp(type: Zip) {
         include "views/**"
     }
     destinationDir = file("dist")
-    baseName = "trainSchedule"
+    archiveFileName = "trainSchedule.zip" // Specify the name of the zip file
 }
 
 // Define npm tasks
