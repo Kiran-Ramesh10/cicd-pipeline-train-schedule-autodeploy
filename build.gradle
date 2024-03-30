@@ -1,10 +1,3 @@
-// Specify the plugin repository explicitly
-pluginManagement {
-    repositories {
-        gradlePluginPortal()
-    }
-}
-
 // Apply the Node.js plugin to execute Node.js and npm tasks
 plugins {
     id 'com.github.node-gradle.node' version '3.0.1'
