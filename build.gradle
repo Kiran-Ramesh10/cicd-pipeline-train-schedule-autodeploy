@@ -50,5 +50,5 @@ task clean(type: Delete) {
 }
 
 // Declare task dependencies
-build.dependsOn zip
+build.dependsOn packageApp
 zip.dependsOn npm_build
