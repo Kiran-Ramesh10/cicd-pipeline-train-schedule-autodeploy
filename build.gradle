@@ -23,20 +23,20 @@ task zip(type: Zip) {
     baseName "trainSchedule"
 }
 
-// Declare npm tasks
-task npmInstall(type: NpmTask) {
+// Declare custom npm tasks with different names
+task npmInstallCustom(type: NpmTask) {
     args = ['install']
 }
 
-task npm_test(type: NpmTask) {
+task npmTest(type: NpmTask) {
     args = ['test']
 }
 
-task npm_build(type: NpmTask) {
+task npmBuild(type: NpmTask) {
     args = ['build']
 }
 
 // Declare task dependencies
-npm_test.dependsOn npmInstall
-npm_build.dependsOn npm_test
+npmTest.dependsOn npmInstallCustom
+npmBuild.dependsOn npmTest
 build.dependsOn zip
