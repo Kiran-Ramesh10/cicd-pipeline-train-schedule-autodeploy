@@ -1,19 +1,33 @@
 ---
-- name: Build Docker image
+- name: Build and Push Docker Image to Docker Hub
   hosts: localhost
+  become: yes
   tasks:
     - name: Ensure Dockerfile is present
       stat:
-        path: ./Dockerfile
+        path: /path/to/Dockerfile
       register: dockerfile_stat
 
     - name: Fail if Dockerfile is not present
       fail:
         msg: "Dockerfile not found"
       when: dockerfile_stat.stat.exists == False
+      
+    - name: Log in to Docker Hub
+      docker_login:
+        username: kiranramesh17kr@gmail.com
+        password: Iamlegend@987        
 
     - name: Build Docker image
       docker_image:
-        path: /path/to/docker_build_context
-        name: your_docker_username/your_docker_image_name
+        name: kiranramesh/trainscheduler
         tag: latest
+        build:
+          path: ./docker_build_context
+
+    - name: Push Docker image to Docker Hub
+      docker_image:
+        name: kiranramesh/trainscheduler
+        tag: latest
+        push: yes
+
