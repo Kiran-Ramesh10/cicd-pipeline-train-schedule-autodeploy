@@ -1,0 +1,25 @@
+---
+- name: Deploy to Kubernetes
+  hosts: localhost
+  tasks:
+    - name: Ensure kubeconfig is present
+      stat:
+        path: /path/to/kubeconfig
+      register: kubeconfig_stat
+
+    - name: Fail if kubeconfig is not present
+      fail:
+        msg: "Kubeconfig not found"
+      when: kubeconfig_stat.stat.exists == False
+
+    - name: Deploy to Canary
+      k8s:
+        kubeconfig: /path/to/kubeconfig
+        state: present
+        definition: /path/to/train-schedule-kube-canary.yml
+
+    - name: Deploy to Production
+      k8s:
+        kubeconfig: /path/to/kubeconfig
+        state: present
+        definition: /path/to/train-schedule-kube.yml
