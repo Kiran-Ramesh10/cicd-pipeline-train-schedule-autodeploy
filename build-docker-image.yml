@@ -1,0 +1,19 @@
+---
+- name: Build Docker image
+  hosts: localhost
+  tasks:
+    - name: Ensure Dockerfile is present
+      stat:
+        path: ./Dockerfile
+      register: dockerfile_stat
+
+    - name: Fail if Dockerfile is not present
+      fail:
+        msg: "Dockerfile not found"
+      when: dockerfile_stat.stat.exists == False
+
+    - name: Build Docker image
+      docker_image:
+        path: /path/to/docker_build_context
+        name: your_docker_username/your_docker_image_name
+        tag: latest
