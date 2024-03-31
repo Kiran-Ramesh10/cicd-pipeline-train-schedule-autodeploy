@@ -64,6 +64,22 @@ pipeline {
                 )
             }
         }
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                // Install Ansible
+                sh 'apt-get update && apt-get install -y ansible'
+                
+                // Run Ansible playbook to build Docker image
+                sh 'ansible-playbook build-docker-image.yml'
+            }
+        }
+        stage('Deploy to Kubernetes') {
+            steps {
+                // Run Ansible playbook to deploy to Kubernetes
+                sh 'ansible-playbook deploy-to-kubernetes.yml'
+            }
+        }
     }
-    }
+    }    
 }
