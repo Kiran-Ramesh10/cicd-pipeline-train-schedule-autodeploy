@@ -4,7 +4,7 @@
   tasks:
     - name: Ensure kubeconfig is present
       stat:
-        path: /path/to/kubeconfig
+        path: ./kubeconfig
       register: kubeconfig_stat
 
     - name: Fail if kubeconfig is not present
@@ -14,12 +14,12 @@
 
     - name: Deploy to Canary
       k8s:
-        kubeconfig: /path/to/kubeconfig
+        kubeconfig: ./kubeconfig
         state: present
-        definition: /path/to/train-schedule-kube-canary.yml
+        definition: ./train-schedule-kube-canary.yml
 
     - name: Deploy to Production
       k8s:
-        kubeconfig: /path/to/kubeconfig
+        kubeconfig: ./kubeconfig
         state: present
-        definition: /path/to/train-schedule-kube.yml
+        definition: ./train-schedule-kube.yml
